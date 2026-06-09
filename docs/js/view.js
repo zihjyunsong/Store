@@ -29,7 +29,7 @@ const View = {
 
     el.innerHTML = cats.map(cat => `
       <a href="${cat.file}" target="_blank" class="category-card">
-        <img src="../Images/${cat.key}/${cat.key}_01.png"
+        <img src="images/${cat.key}/${cat.key}_01.png"
              alt="${cat.zh}"
              onerror="this.style.visibility='hidden'">
         <span class="category-name-zh">${cat.zh}</span>

@@ -56,10 +56,7 @@ const Model = {
         obj[h] = values[i] !== undefined ? values[i].trim() : '';
       });
 
-      // 修正圖片路徑：從 Web/ 讀取時需要 ../
-      if (obj.image && obj.image.startsWith('images/')) {
-        obj.image = '../' + obj.image;
-      }
+      // images/ 已在 docs/ 內，路徑直接使用
 
       return obj;
     });
