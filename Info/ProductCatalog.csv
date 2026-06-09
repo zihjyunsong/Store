@@ -1,0 +1,41 @@
+category,image,name_zh,name_en,price_twd,description_zh
+Cake,Images/Cake/Cake_01.png,草莓雲朵杯子蛋糕,Strawberry Cloud Cupcake,260,草莓酸甜配輕盈奶霜
+Cake,Images/Cake/Cake_02.png,藍莓檸檬塔,Blueberry Lemon Tart,320,果香明亮的法式小塔
+Cake,Images/Cake/Cake_03.png,紅絲絨方塊蛋糕,Red Velvet Petit Cake,330,濃郁可可與柔滑奶油
+Cake,Images/Cake/Cake_04.png,抹茶巧克力千層,Matcha Chocolate Layer Cake,350,抹茶清香搭配可可層次
+Cake,Images/Cake/Cake_05.png,焦糖布丁蛋糕,Caramel Pudding Cake,290,焦糖香氣柔軟滑順
+Cake,Images/Cake/Cake_06.png,覆盆子泡芙塔,Raspberry Cream Puff,280,莓果奶霜清爽不膩
+Cake,Images/Cake/Cake_07.png,椰香抹茶杯,Coconut Matcha Parfait,240,抹茶與椰香的清新組合
+Cake,Images/Cake/Cake_08.png,熔岩巧克力蛋糕,Chocolate Lava Cake,390,熱熱吃最幸福
+Cake,Images/Cake/Cake_09.png,薰衣草蜂蜜杯子蛋糕,Lavender Honey Cupcake,270,花香淡雅帶蜂蜜甜
+Cake,Images/Cake/Cake_10.png,芒果百香乳酪蛋糕,Mango Passion Cheesecake,360,熱帶果香濃郁明亮
+Cookie,Images/Cookie/Cookie_01.png,巧克力豆餅乾,Chocolate Chip Cookie,55,經典酥香巧克力味
+Cookie,Images/Cookie/Cookie_02.png,粉紅星星糖霜餅,Pink Star Iced Cookie,65,可愛糖霜脆餅
+Cookie,Images/Cookie/Cookie_03.png,燕麥葡萄乾餅,Oat Raisin Cookie,60,穀香扎實又耐吃
+Cookie,Images/Cookie/Cookie_04.png,抹茶夾心餅,Matcha Cream Sandwich,70,抹茶香配奶油夾心
+Cookie,Images/Cookie/Cookie_05.png,花生格紋餅,Peanut Butter Cookie,50,花生香濃酥鬆
+Cookie,Images/Cookie/Cookie_06.png,檸檬糖霜餅,Lemon Glaze Cookie,45,清爽檸檬小甜點
+Cookie,Images/Cookie/Cookie_07.png,紅絲絨白巧餅,Red Velvet White Choc Cookie,75,紅絲絨香配白巧克力
+Cookie,Images/Cookie/Cookie_08.png,薑餅小人,Gingerbread Friend,80,暖香料的可愛餅乾
+Cookie,Images/Cookie/Cookie_09.png,草莓馬卡龍,Strawberry Macaron,70,外酥內軟的莓果香
+Cookie,Images/Cookie/Cookie_10.png,可可裂紋餅,Chocolate Crinkle Cookie,65,濃可可與糖粉香
+Japan,Images/Japan/Japan_01.png,櫻花和菓子,Sakura Wagashi,150,淡雅花香入口柔軟
+Japan,Images/Japan/Japan_02.png,菊花練切,Kiku Nerikiri,160,細緻豆沙和菓子
+Japan,Images/Japan/Japan_03.png,草莓大福,Strawberry Daifuku,130,酸甜草莓包進紅豆香
+Japan,Images/Japan/Japan_04.png,黑豆紅豆大福,Black Bean Daifuku,120,軟糯大福豆香滿滿
+Japan,Images/Japan/Japan_05.png,三色糰子,Hanami Dango,90,粉嫩糰子Q彈可愛
+Japan,Images/Japan/Japan_06.png,銅鑼燒,Dorayaki,110,鬆軟餅皮夾紅豆餡
+Japan,Images/Japan/Japan_07.png,鯛魚燒,Taiyaki,130,外酥內甜的日式小點
+Japan,Images/Japan/Japan_08.png,抹茶羊羹,Matcha Yokan,180,濃厚抹茶清甜回甘
+Japan,Images/Japan/Japan_09.png,蕨餅黑糖盤,Warabi Mochi Plate,220,黑糖蜜與黃豆粉香
+Japan,Images/Japan/Japan_10.png,彩糖和菓子盤,Colorful Wagashi Plate,260,繽紛小點適合分享
+Taiwan,Images/Taiwan/Taiwan_01.png,鳳梨酥,Pineapple Cake,85,酥香外皮包酸甜鳳梨
+Taiwan,Images/Taiwan/Taiwan_02.png,花紋月餅,Floral Mooncake,120,細緻餅皮與溫潤內餡
+Taiwan,Images/Taiwan/Taiwan_03.png,蛋黃酥,Yolk Pastry,150,酥皮豆沙與鹹蛋黃
+Taiwan,Images/Taiwan/Taiwan_04.png,綠豆椪,Mung Bean Pastry,110,綿密綠豆香氣樸實
+Taiwan,Images/Taiwan/Taiwan_05.png,芋泥酥,Taro Swirl Pastry,135,芋香綿密層層酥
+Taiwan,Images/Taiwan/Taiwan_06.png,雪花牛軋夾心餅,Nougat Cracker Sandwich,80,鹹甜酥脆不黏牙
+Taiwan,Images/Taiwan/Taiwan_07.png,太陽餅,Sun Cake,95,麥芽香甜酥鬆
+Taiwan,Images/Taiwan/Taiwan_08.png,葡式蛋塔,Egg Tart,90,焦香蛋奶滑順
+Taiwan,Images/Taiwan/Taiwan_09.png,芝麻麻糬球,Sesame Mochi Ball,100,芝麻香濃口感Q彈
+Taiwan,Images/Taiwan/Taiwan_10.png,花生麻糬,Peanut Mochi,90,花生香包著柔軟麻糬

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日式甜點 Japan — 露米甜點</title>
+  <meta name="description" content="清雅、細緻、剛好的甜。露米甜點日式甜點系列。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="category" data-category="Japan">
+
+  <!-- ── 分類標題（由 JS 渲染） ─────────────────────── -->
+  <div id="category-header"></div>
+
+  <!-- ── 商品列表 ───────────────────────────────────── -->
+  <section>
+    <div class="container">
+      <div id="products-grid" class="products-grid">
+        <p class="loading">載入中⋯</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 頁尾 ──────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <p id="footer-text" class="footer-text">今天也要吃點甜。</p>
+      <p class="footer-copy">© 2024 露米甜點 Lumière Pâtisserie</p>
+    </div>
+  </footer>
+
+  <script src="js/model.js"></script>
+  <script src="js/view.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+</html>
