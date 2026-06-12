@@ -1,4 +1,4 @@
-# 甜點小店網站設計文檔
+﻿# 甜點小店網站設計文檔
 
 ## 1. 專案目標
 
@@ -54,7 +54,7 @@
 
 所以網站內容要盡量資料化。
 
-店主日後只需要修改 `Docs/` 裡的檔案。
+店主日後只需要修改 `Info/` 裡的檔案。
 
 不要要求店主改：
 
@@ -69,7 +69,7 @@
 新增：
 
 ```text
-Docs/SiteConfig.json
+Info/SiteConfig.json
 ```
 
 用途：
@@ -92,8 +92,8 @@ Docs/SiteConfig.json
   "storeNameZh": "露米甜點",
   "storeNameEn": "Lumiere Patisserie",
   "tagline": "法式手藝，日常甜點。",
-  "heroText": "回台女孩的明亮甜點小店。",
-  "address": "台北市甜點街 12 號",
+  "heroText": "台中女孩的明亮甜點小店。",
+  "address": "台中市甜點街 12 號",
   "phone": "02-1234-5678",
   "email": "hello@lumiere-dessert.com",
   "businessHours": "週三至週日 11:00-19:00",
@@ -116,7 +116,7 @@ Docs/SiteConfig.json
 使用：
 
 ```text
-Docs/StoreIntro.md
+Info/StoreIntro.md
 ```
 
 用途：
@@ -127,20 +127,19 @@ Docs/StoreIntro.md
 
 首頁最重要的店名與聯絡資訊不直接寫死在這裡。
 
-首頁主要資料以 `Docs/SiteConfig.json` 為準。
+首頁主要資料以 `Info/SiteConfig.json` 為準。
 
 ### 店主介紹資料
 
 新增：
 
 ```text
-Docs/OwnerProfile.md
+Info/OwnerProfile.md
 ```
 
 用途：
 
-- `Web/owner.html` 店主介紹頁
-- 留法背景
+- `docs/owner.html` 店主介紹頁
 - 甜點理念
 - 個人風格介紹
 
@@ -155,7 +154,7 @@ Docs/OwnerProfile.md
 使用：
 
 ```text
-Docs/ProductCatalog.csv
+Info/ProductCatalog.csv
 ```
 
 欄位：
@@ -195,7 +194,7 @@ Docs/ProductCatalog.csv
 
 ```csv
 category,image,name_zh,name_en,price_twd,description_zh
-Cake,Images/Cake/Cake_11.png,蜜桃鮮奶油蛋糕,Peach Cream Cake,320,蜜桃香甜奶霜輕盈
+Cake,images/Cake/Cake_11.png,蜜桃鮮奶油蛋糕,Peach Cream Cake,320,蜜桃香甜奶霜輕盈
 ```
 
 若要新增第五種分類，不只改 CSV。
@@ -214,10 +213,10 @@ Cake,Images/Cake/Cake_11.png,蜜桃鮮奶油蛋糕,Peach Cream Cake,320,蜜桃�
 使用：
 
 ```text
-Images/Cake/
-Images/Cookie/
-Images/Japan/
-Images/Taiwan/
+docs/images/Cake/
+docs/images/Cookie/
+docs/images/Japan/
+docs/images/Taiwan/
 ```
 
 每一類 10 張圖片。
@@ -227,7 +226,7 @@ Images/Taiwan/
 使用：
 
 ```text
-Images/Background/flowsers.png
+docs/images/Background/flowsers.png
 ```
 
 只用在：
@@ -248,13 +247,19 @@ Images/Background/flowsers.png
 建議檔案結構：
 
 ```text
-Web/
+docs/
   index.html
   owner.html
   cake.html
   cookie.html
   japan.html
   taiwan.html
+  images/
+    Background/
+    Cake/
+    Cookie/
+    Japan/
+    Taiwan/
   data/
     site-config.json
     products.csv
@@ -266,28 +271,19 @@ Web/
     model.js
     view.js
     controller.js
-  assets/
-    bg-header.png
-    bg-footer.png
 ```
 
 說明：
 
-開發時資料原始檔放在 `Docs/`。
-
-若 GitHub Pages 讀取 `Docs/` 路徑不方便，可部署時複製到：
-
-```text
-Web/data/
-```
+資料原始檔放在 `Info/`，網站使用的資料檔放在 `docs/data/`。
 
 網站實際讀取：
 
 ```text
-Web/data/site-config.json
-Web/data/products.csv
-Web/data/store-intro.md
-Web/data/owner-profile.md
+docs/data/site-config.json
+docs/data/products.csv
+docs/data/store-intro.md
+docs/data/owner-profile.md
 ```
 
 這樣店主只要改資料檔。
@@ -299,7 +295,7 @@ Web/data/owner-profile.md
 首頁：
 
 ```text
-Web/index.html
+docs/index.html
 ```
 
 內容：
@@ -315,7 +311,7 @@ Web/index.html
 店主介紹頁：
 
 ```text
-Web/owner.html
+docs/owner.html
 ```
 
 內容：
@@ -332,10 +328,10 @@ Web/owner.html
 分類頁：
 
 ```text
-Web/cake.html
-Web/cookie.html
-Web/japan.html
-Web/taiwan.html
+docs/cake.html
+docs/cookie.html
+docs/japan.html
+docs/taiwan.html
 ```
 
 每一類甜點使用獨立頁面。
@@ -366,7 +362,7 @@ target="_blank"
 檔案：
 
 ```text
-Web/js/model.js
+docs/js/model.js
 ```
 
 負責：
@@ -380,21 +376,21 @@ Web/js/model.js
 資料來源：
 
 ```text
-Web/data/site-config.json
-Web/data/products.csv
-Web/data/store-intro.md
-Web/data/owner-profile.md
+docs/data/site-config.json
+docs/data/products.csv
+docs/data/store-intro.md
+docs/data/owner-profile.md
 ```
 
-開發原始資料可放在：
+原始資料放在：
 
 ```text
-Docs/SiteConfig.json
-Docs/ProductCatalog.csv
-Docs/OwnerProfile.md
+Info/SiteConfig.json
+Info/ProductCatalog.csv
+Info/OwnerProfile.md
 ```
 
-部署時再複製到 `Web/data/`。
+網站使用的是 `docs/data/` 裡的資料。
 
 ### 資料檔優先原則
 
@@ -420,7 +416,7 @@ fetch("./data/owner-profile.md")
 檔案：
 
 ```text
-Web/js/view.js
+docs/js/view.js
 ```
 
 負責：
@@ -444,7 +440,7 @@ Web/js/view.js
 檔案：
 
 ```text
-Web/js/controller.js
+docs/js/controller.js
 ```
 
 負責：
@@ -511,7 +507,7 @@ Web/js/controller.js
 
 頂部背景：
 
-- 來源：`Images/Background/flowsers.png`
+- 來源：`docs/images/Background/flowsers.png`
 - 裁切成橫向 banner
 - 建議高度：桌機 `280px`，手機 `190px`
 - 圖片位置：center top
@@ -670,7 +666,7 @@ Email：hello@lumiere-dessert.com
 點擊後開啟：
 
 ```text
-Web/owner.html
+docs/owner.html
 ```
 
 按鈕設定：
@@ -865,44 +861,29 @@ Strawberry Cloud Cupcake
 - 商品價格要一眼看到
 - 圖片不可擠壓變形
 
-## 12. GitHub Pages 注意事項
+## 12. GitHub Pages 部署設定
 
-GitHub Pages 可直接部署靜態檔案。
+網站已部署至 GitHub Pages。
 
-建議：
+目前設定：
 
-- 將網站入口放在 `Web/index.html`
-- 或部署時把 `Web` 設為 Pages 來源資料夾
+- 部署來源：`docs/` 資料夾
+- 網站入口：`docs/index.html`
+- 圖片資料夾：`docs/images/`
 
-若 Pages 只能讀根目錄，可改成：
+在 GitHub repo → Settings → Pages → Source 選擇 `/docs` 資料夾即可。
 
-```text
-index.html
-css/
-js/
-Images/
-Docs/
-```
-
-圖片路徑要使用相對路徑。
-
-範例：
-
-從 `Web/index.html` 讀圖片：
+圖片路徑（從頁面讀取）：
 
 ```text
-../Images/Cake/Cake_01.png
+images/Cake/Cake_01.png
 ```
 
-從根目錄 `index.html` 讀圖片：
+背景圖路徑（從 `docs/css/` 讀取）：
 
 ```text
-Images/Cake/Cake_01.png
+../images/Background/flowsers.png
 ```
-
-目前建議先使用 `Web/` 開發。
-
-之後部署前再確認 GitHub Pages 的來源設定。
 
 ## 13. 互動設計
 
@@ -963,22 +944,24 @@ Images/Cake/Cake_01.png
 
 | 想修改 | 修改檔案 |
 |---|---|
-| 新增、刪除、改商品 | `Web/data/products.csv` |
-| 改店名、電話、地址、營業時間 | `Web/data/site-config.json` |
-| 改店主介紹、個人故事 | `Web/data/owner-profile.md` |
+| 新增、刪除、改商品 | `docs/data/products.csv` |
+| 改店名、電話、地址、營業時間 | `docs/data/site-config.json` |
+| 改店主介紹、個人故事 | `docs/data/owner-profile.md` |
 
-如果仍保留 `Docs/` 當原始資料區，則先改：
+`Info/` 是原始參考資料區，網站實際讀取的是 `docs/data/`。
+
+若要同步，先改：
 
 ```text
-Docs/ProductCatalog.csv
-Docs/SiteConfig.json
-Docs/OwnerProfile.md
+Info/ProductCatalog.csv
+Info/SiteConfig.json
+Info/OwnerProfile.md
 ```
 
 再同步到：
 
 ```text
-Web/data/
+docs/data/
 ```
 
 ### 修改 CSV 可以增加品項嗎？
@@ -990,7 +973,7 @@ Web/data/
 範例：
 
 ```csv
-Cake,../Images/Cake/Cake_11.png,蜜桃鮮奶油蛋糕,Peach Cream Cake,320,蜜桃香甜奶霜輕盈
+Cake,images/Cake/Cake_11.png,蜜桃鮮奶油蛋糕,Peach Cream Cake,320,蜜桃香甜奶霜輕盈
 ```
 
 注意：
@@ -1013,7 +996,7 @@ Cake,../Images/Cake/Cake_11.png,蜜桃鮮奶油蛋糕,Peach Cream Cake,320,蜜�
 修改：
 
 ```text
-Web/data/site-config.json
+docs/data/site-config.json
 ```
 
 常改欄位：
@@ -1060,7 +1043,7 @@ Web/data/site-config.json
 如果要放比較完整的品牌短文，可以改：
 
 ```text
-Web/data/store-intro.md
+docs/data/store-intro.md
 ```
 
 建議首頁仍保持短句。
@@ -1072,7 +1055,7 @@ Web/data/store-intro.md
 修改：
 
 ```text
-Web/data/owner-profile.md
+docs/data/owner-profile.md
 ```
 
 這個檔案只給店主介紹頁使用。
@@ -1152,12 +1135,12 @@ Web/data/owner-profile.md
 
 ## 19. 開發順序建議
 
-1. 建立 `Web/index.html`
-2. 建立 `Web/css/style.css`
-3. 建立 `Web/js/model.js`
-4. 建立 `Web/js/view.js`
-5. 建立 `Web/js/controller.js`
-6. 建立 `Web/owner.html`
+1. 建立 `docs/index.html`
+2. 建立 `docs/css/style.css`
+3. 建立 `docs/js/model.js`
+4. 建立 `docs/js/view.js`
+5. 建立 `docs/js/controller.js`
+6. 建立 `docs/owner.html`
 7. 建立四個分類頁
 8. 裁切背景圖成 header/footer banner
 9. 套用 RWD

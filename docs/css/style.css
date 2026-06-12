@@ -537,3 +537,216 @@ footer::before {
 
   .category-title-zh { font-size: 1.6rem; }
 }
+
+/* ── Site Header ─────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header-inner {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.site-logo .logo-zh {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cocoa);
+  letter-spacing: 0.04em;
+}
+
+.site-logo .logo-en {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.85rem;
+  color: var(--taupe);
+  letter-spacing: 0.04em;
+}
+
+.header-auth {
+  display: flex;
+  align-items: center;
+}
+
+.auth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--taupe);
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+}
+
+.auth-btn:hover {
+  background: var(--almond);
+  color: var(--petal);
+}
+
+.auth-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.auth-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cocoa);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-logout-btn {
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--taupe);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 4px 14px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.auth-logout-btn:hover {
+  background: var(--petal);
+  color: var(--white);
+  border-color: var(--petal);
+}
+
+/* ── Login Page ──────────────────────────────────────── */
+.login-page {
+  position: relative;
+  min-height: calc(100vh - 61px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  background-image: url('../images/Background/flowsers.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 253, 248, 0.78);
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 44px 36px;
+  text-align: center;
+  box-shadow: 0 12px 40px var(--shadow);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cocoa);
+  letter-spacing: 0.04em;
+}
+
+.login-subtitle {
+  font-size: 0.92rem;
+  color: var(--taupe);
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cocoa);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 100px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+
+.google-btn:hover:not(:disabled) {
+  background: var(--almond);
+  border-color: var(--petal);
+  transform: translateY(-2px);
+}
+
+.google-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.form-error {
+  background: #FBEAEA;
+  color: var(--berry);
+  font-size: 0.86rem;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+}
+
+.login-hint {
+  font-size: 0.85rem;
+  color: var(--leaf);
+  margin-top: 18px;
+}
+
+.login-foot {
+  margin-top: 26px;
+  font-size: 0.86rem;
+}
+
+.login-foot a {
+  color: var(--taupe);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.login-foot a:hover { color: var(--petal); }
+
+@media (max-width: 767px) {
+  .site-header-inner { height: 52px; }
+  .site-logo .logo-en { display: none; }
+  .auth-name { max-width: 80px; }
+  .login-card { padding: 34px 24px; }
+}

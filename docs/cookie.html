@@ -9,8 +9,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
 </head>
 <body data-page="category" data-category="Cookie">
+
+  <!-- ── 頂部導覽列 ─────────────────── -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="index.html" class="site-logo">
+        <span class="logo-zh">露米甜點</span>
+        <span class="logo-en">Lumière</span>
+      </a>
+      <div class="header-auth">
+        <a href="login.html" class="auth-btn" id="auth-login-btn" title="登入" aria-label="登入">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+        <div class="auth-user" id="auth-user" style="display:none">
+          <img id="auth-avatar" src="" alt="" class="auth-avatar">
+          <span id="auth-name" class="auth-name"></span>
+          <button id="auth-logout-btn" class="auth-logout-btn">登出</button>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!-- ── 分類標題（由 JS 渲染） ─────────────────────── -->
   <div id="category-header"></div>
