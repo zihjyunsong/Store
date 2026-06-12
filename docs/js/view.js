@@ -106,6 +106,7 @@ const View = {
           <div class="product-name-en">${product.name_en}</div>
           <div class="product-price">NT$${product.price_twd}</div>
           <div class="product-desc">${product.description_zh}</div>
+          <button class="cart-add-btn" data-product-id="${product.id}">加入購物車</button>
         </div>
       </div>`;
   },
@@ -161,6 +162,74 @@ const View = {
       return;
     }
     el.innerHTML = `<div class="products-grid">${products.map(p => this._productCardHTML(p)).join('')}</div>`;
+  },
+
+  /** 更新 header 購物車徽章數字 */
+  updateCartBadge(count) {
+    const badge = document.getElementById('auth-cart-count');
+    if (!badge) return;
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+  },
+
+  /**
+   * 渲染購物車頁。
+   * items: [{ product, qty, lineTotal }]
+   * summary: { subtotal, discount, total, discountHint }
+   */
+  renderCartPage(items, summary, isLoggedIn) {
+    const el = document.getElementById('cart-content');
+    if (!el) return;
+
+    if (!isLoggedIn) {
+      el.innerHTML = `
+        <div class="favorites-empty">
+          <p>登入後就能使用購物車。</p>
+          <a href="login.html?from=cart.html" class="btn-back">前往登入 →</a>
+        </div>`;
+      return;
+    }
+    if (!items || items.length === 0) {
+      el.innerHTML = `
+        <div class="favorites-empty">
+          <p>購物車是空的。<br>到商品頁把喜歡的甜點加進來吧！</p>
+          <a href="index.html" class="btn-back">逛逛甜點 →</a>
+        </div>`;
+      return;
+    }
+
+    const rows = items.map(({ product, qty, lineTotal }) => `
+      <div class="cart-row" data-product-id="${product.id}">
+        <img class="cart-thumb" src="${product.image}" alt="${product.name_zh}"
+             onerror="this.style.visibility='hidden'">
+        <div class="cart-row-info">
+          <div class="cart-row-name">${product.name_zh}</div>
+          <div class="cart-row-unit">NT$${product.price_twd} / 個</div>
+        </div>
+        <div class="cart-qty">
+          <button class="qty-btn" data-action="dec" data-product-id="${product.id}" aria-label="減少">−</button>
+          <span class="qty-num">${qty}</span>
+          <button class="qty-btn" data-action="inc" data-product-id="${product.id}" aria-label="增加">＋</button>
+        </div>
+        <div class="cart-row-total">NT$${lineTotal}</div>
+        <button class="cart-remove" data-action="remove" data-product-id="${product.id}" title="移除">✕</button>
+      </div>`).join('');
+
+    el.innerHTML = `
+      <div class="cart-list">${rows}</div>
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>小計</span><span>NT$${summary.subtotal}</span>
+        </div>
+        <div class="summary-row summary-discount">
+          <span>折扣${summary.discount > 0 ? '' : `（${summary.discountHint}）`}</span>
+          <span>${summary.discount > 0 ? '− NT$' + summary.discount : 'NT$0'}</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>總計</span><span>NT$${summary.total}</span>
+        </div>
+        <p class="cart-note">目前尚未開放線上付款，結帳功能即將推出。</p>
+      </div>`;
   },
 
   /** 渲染分類頁標題區 */
