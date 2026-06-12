@@ -76,10 +76,27 @@ const View = {
       </div>`;
   },
 
+  /** 愛心 SVG（實心/空心由 CSS 控制） */
+  _heartSVG() {
+    return `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>`;
+  },
+
   /** 渲染單張商品卡片 HTML */
   _productCardHTML(product) {
+    const isFav = (typeof DB !== 'undefined') && DB.isFavorite(product.id);
     return `
-      <div class="product-card">
+      <div class="product-card" data-product-id="${product.id}">
+        <button class="fav-btn ${isFav ? 'is-fav' : ''}"
+                data-product-id="${product.id}"
+                title="${isFav ? '移除最愛' : '加入最愛'}"
+                aria-label="加入最愛">
+          ${this._heartSVG()}
+        </button>
         <img src="${product.image}"
              alt="${product.name_zh}"
              loading="lazy"
@@ -110,6 +127,40 @@ const View = {
       return;
     }
     el.innerHTML = products.map(p => this._productCardHTML(p)).join('');
+  },
+
+  /** 更新頁面上所有愛心按鈕的狀態 */
+  updateFavoriteHearts(favIds) {
+    const set = new Set(favIds);
+    document.querySelectorAll('.fav-btn').forEach(btn => {
+      const isFav = set.has(btn.dataset.productId);
+      btn.classList.toggle('is-fav', isFav);
+      btn.title = isFav ? '移除最愛' : '加入最愛';
+    });
+  },
+
+  /** 渲染我的最愛頁 */
+  renderFavoritesPage(products, isLoggedIn) {
+    const el = document.getElementById('favorites-grid');
+    if (!el) return;
+
+    if (!isLoggedIn) {
+      el.innerHTML = `
+        <div class="favorites-empty">
+          <p>登入後就能收藏你最愛的甜點。</p>
+          <a href="login.html?from=favorites.html" class="btn-back">前往登入 →</a>
+        </div>`;
+      return;
+    }
+    if (!products || products.length === 0) {
+      el.innerHTML = `
+        <div class="favorites-empty">
+          <p>還沒有收藏任何甜點。<br>到商品頁點愛心，把喜歡的甜點收進來吧！</p>
+          <a href="index.html" class="btn-back">逛逛甜點 →</a>
+        </div>`;
+      return;
+    }
+    el.innerHTML = `<div class="products-grid">${products.map(p => this._productCardHTML(p)).join('')}</div>`;
   },
 
   /** 渲染分類頁標題區 */

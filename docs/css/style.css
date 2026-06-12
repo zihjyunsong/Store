@@ -750,3 +750,63 @@ footer::before {
   .auth-name { max-width: 80px; }
   .login-card { padding: 34px 24px; }
 }
+
+/* ── Favorites（最愛收藏） ───────────────────────────── */
+.product-card { position: relative; }
+
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.92);
+  color: var(--taupe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.fav-btn:hover {
+  transform: scale(1.12);
+  color: var(--petal);
+}
+
+.fav-btn.is-fav {
+  color: var(--petal);
+}
+
+.fav-btn.is-fav svg {
+  fill: var(--petal);
+}
+
+/* Header 我的最愛連結 */
+.auth-fav-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--taupe);
+  transition: color 0.18s ease;
+}
+
+.auth-fav-link:hover {
+  color: var(--petal);
+}
+
+/* 我的最愛頁：空狀態 */
+.favorites-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--taupe);
+  line-height: 1.9;
+}
+
+.favorites-empty .btn-back {
+  display: inline-block;
+  margin-top: 16px;
+}

@@ -43,9 +43,17 @@ const Model = {
       .filter(Boolean);
   },
 
+  /** 依 id 清單篩選商品（我的最愛頁用） */
+  getProductsByIds(ids) {
+    const set = new Set(ids);
+    return this.products.filter(p => set.has(p.id));
+  },
+
   // ── Private helpers ──────────────────────────────────
 
   _parseCSV(text) {
+    // 移除檔案開頭可能存在的 BOM 字元（U+FEFF），避免第一個欄位名稱解析錯誤
+    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
     const lines = text.trim().split('\n');
     const headers = lines[0].split(',').map(h => h.trim());
 
@@ -57,6 +65,11 @@ const Model = {
       });
 
       // images/ 已在 docs/ 內，路徑直接使用
+
+      // 商品 id：取圖片檔名（不含副檔名），例如 "Cake_01"
+      if (obj.image) {
+        obj.id = obj.image.split('/').pop().replace(/\.[^.]+$/, '');
+      }
 
       return obj;
     });
