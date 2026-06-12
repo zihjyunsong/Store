@@ -105,7 +105,15 @@
           redirectAfterLogin();
         } catch (err) {
           console.error('[Login] Google 登入失敗：', err);
-          errorEl.textContent = '登入失敗，請再試一次。';
+          // 依錯誤代碼顯示原因，方便除錯
+          const messages = {
+            'auth/popup-closed-by-user': '登入視窗被關閉，請再試一次。',
+            'auth/cancelled-popup-request': '登入視窗被關閉，請再試一次。',
+            'auth/popup-blocked': '瀏覽器擋下了登入視窗，請允許彈出視窗後再試。',
+            'auth/unauthorized-domain': '此網域未在 Firebase 授權網域清單中。',
+            'auth/network-request-failed': '網路連線失敗，請檢查網路後再試。',
+          };
+          errorEl.textContent = messages[err.code] || `登入失敗（${err.code || err.message}）`;
           errorEl.style.display = 'block';
           btn.disabled = false;
         }
