@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>購物車 — 露米甜點</title>
-  <meta name="description" content="你的露米甜點購物車。">
+  <title>我的訂單 — 露米甜點</title>
+  <meta name="description" content="查看你的露米甜點訂單。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,12 +14,11 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-functions-compat.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/db.js"></script>
 </head>
-<body data-page="cart">
+<body data-page="orders">
 
   <!-- ── 頂部導覽列 ─────────────────── -->
   <header class="site-header">
@@ -50,18 +49,18 @@
   <div class="category-hero">
     <div class="container">
       <div class="category-nav">
-        <a href="index.html" class="btn-back">← 回首頁</a>
+        <a href="cart.html" class="btn-back">← 回購物車</a>
       </div>
-      <div class="category-title-zh">購物車</div>
-      <div class="category-title-en">Cart</div>
-      <div class="category-desc">確認你的甜點，準備帶它們回家。</div>
+      <div class="category-title-zh">我的訂單</div>
+      <div class="category-title-en">Orders</div>
+      <div class="category-desc">你的訂購與付款紀錄。</div>
     </div>
   </div>
 
-  <!-- ── 購物車內容 ─────────────────────────────────── -->
+  <!-- ── 訂單列表 ───────────────────────────────────── -->
   <section>
     <div class="container">
-      <div id="cart-content">
+      <div id="orders-content">
         <p class="loading">載入中⋯</p>
       </div>
     </div>

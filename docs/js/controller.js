@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       initFavorites();
     } else if (page === 'cart') {
       initCart();
+    } else if (page === 'orders') {
+      initOrders();
     }
 
     initFavoriteHearts();
@@ -135,6 +137,61 @@ function initCart() {
       if (btn.dataset.action === 'remove') await DB.setCartQty(id, 0);
     } catch (err) {
       console.error('[Controller] 更新購物車失敗：', err);
+    }
+  });
+
+  // 結帳按鈕（由 renderCartPage 動態產生，用事件委派）
+  document.addEventListener('click', (e) => {
+    if (e.target.id === 'checkout-btn') checkout();
+  });
+}
+
+/* 結帳：呼叫後端 createOrder（只送商品 id 與數量，價格後端自己查） */
+async function checkout() {
+  const btn = document.getElementById('checkout-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '建立訂單中⋯'; }
+
+  try {
+    const items = Object.entries(DB.getCart()).map(([id, qty]) => ({ id, qty }));
+    const createOrder = firebase.app().functions('asia-east1').httpsCallable('createOrder');
+    const res = await createOrder({ items });
+
+    // 訂單建立成功 → 清空購物車 → 前往金流付款頁
+    await DB.clearCart();
+    window.location.href = res.data.paymentUrl;
+  } catch (err) {
+    console.error('[Controller] 結帳失敗：', err);
+    alert('結帳失敗：' + (err.message || '請稍後再試'));
+    if (btn) { btn.disabled = false; btn.textContent = '前往結帳'; }
+  }
+}
+
+/* 我的訂單頁 */
+function initOrders() {
+  View.renderFooter(Model.config);
+
+  firebase.auth().onAuthStateChanged(async (user) => {
+    if (!user) {
+      View.renderOrdersPage([], false);
+      return;
+    }
+    try {
+      // 安全規則保證：這個查詢只能撈到自己的訂單
+      const snap = await firebase.firestore()
+        .collection('orders')
+        .where('userId', '==', user.uid)
+        .get();
+
+      const orders = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      // 新的排前面（在前端排序，免建索引）
+      orders.sort((a, b) => {
+        const ta = a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
+        const tb = b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
+        return tb - ta;
+      });
+      View.renderOrdersPage(orders, true);
+    } catch (err) {
+      console.error('[Controller] 讀取訂單失敗：', err);
     }
   });
 }

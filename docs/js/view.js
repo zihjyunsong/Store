@@ -228,8 +228,70 @@ const View = {
         <div class="summary-row summary-total">
           <span>總計</span><span>NT$${summary.total}</span>
         </div>
-        <p class="cart-note">目前尚未開放線上付款，結帳功能即將推出。</p>
+        <button id="checkout-btn" class="checkout-btn">前往結帳</button>
+        <p class="cart-note"><a href="orders.html">查看我的訂單 →</a></p>
       </div>`;
+  },
+
+  /** 渲染我的訂單頁 */
+  renderOrdersPage(orders, isLoggedIn) {
+    const el = document.getElementById('orders-content');
+    if (!el) return;
+
+    if (!isLoggedIn) {
+      el.innerHTML = `
+        <div class="favorites-empty">
+          <p>登入後就能查看你的訂單。</p>
+          <a href="login.html?from=orders.html" class="btn-back">前往登入 →</a>
+        </div>`;
+      return;
+    }
+    if (!orders || orders.length === 0) {
+      el.innerHTML = `
+        <div class="favorites-empty">
+          <p>還沒有任何訂單。</p>
+          <a href="index.html" class="btn-back">逛逛甜點 →</a>
+        </div>`;
+      return;
+    }
+
+    const statusLabel = {
+      pending: { text: '待付款', cls: 'status-pending' },
+      paid:    { text: '已付款', cls: 'status-paid' },
+      failed:  { text: '付款失敗', cls: 'status-failed' },
+    };
+
+    el.innerHTML = orders.map(order => {
+      const st = statusLabel[order.status] || { text: order.status, cls: '' };
+      const date = order.createdAt && order.createdAt.toDate
+        ? order.createdAt.toDate().toLocaleString('zh-TW')
+        : '';
+      const items = (order.items || []).map(it =>
+        `<div class="order-item">
+           <span>${it.name} × ${it.qty}</span>
+           <span>NT$${it.lineTotal}</span>
+         </div>`).join('');
+      const payLink = order.status === 'pending' && order.payment && order.payment.paymentUrl
+        ? `<a class="order-pay-link" href="${order.payment.paymentUrl}">繼續付款 →</a>`
+        : '';
+
+      return `
+        <div class="order-card">
+          <div class="order-head">
+            <div>
+              <span class="order-id">訂單 ${order.id}</span>
+              <span class="order-date">${date}</span>
+            </div>
+            <span class="order-status ${st.cls}">${st.text}</span>
+          </div>
+          <div class="order-items">${items}</div>
+          <div class="order-foot">
+            <span>小計 NT$${order.subtotal}　折扣 −NT$${order.discount}</span>
+            <span class="order-total">總計 NT$${order.total}</span>
+          </div>
+          ${payLink}
+        </div>`;
+    }).join('');
   },
 
   /** 渲染分類頁標題區 */
